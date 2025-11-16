@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الذكاء الاصطناعي في تعزيز التعليم الإلكتروني للمهارات العملية في قطاع غزة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #007bff;
+      --secondary-color: #6c757d;
+      --background-color: #f8f9fa;
+      --card-background: #ffffff;
+      --text-color: #343a40;
+      --border-color: #dee2e6;
+      --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --font-family: 'Tajawal', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      line-height: 1.7;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      direction: rtl;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: 5px;
+      display: inline-block;
+      color: var(--text-color);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-weight: 400;
+    }
+
+    p, li {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    ol, ul {
+      padding-right: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Header */
+    header {
+      background: var(--card-background);
+      color: var(--text-color);
+      padding: 40px 0;
+      text-align: center;
+      box-shadow: var(--shadow-light);
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--secondary-color);
+    }
+
+    .author {
+      font-size: 1rem;
+      color: #777;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: var(--primary-color);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .navbar li a {
+      color: var(--card-background);
+      text-decoration: none;
+      padding: 15px 20px;
+      display: block;
+      transition: background-color 0.3s, border-bottom 0.3s;
+      font-weight: 400;
+    }
+
+    .navbar li a:hover:not(.active) {
+      background-color: #0056b3;
+    }
+
+    .navbar li .nav-link.active {
+      background-color: #0056b3;
+      border-bottom: 4px solid #ffc107;
+      font-weight: 700;
+    }
+
+    /* Sections */
+    .section {
+      padding: 60px 0;
+      background-color: var(--card-background);
+      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-light);
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 10px 25px;
+      margin: 5px 10px 5px 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    /* Primary Button */
+    .btn:not(.secondary) {
+      background-color: var(--primary-color);
+      color: var(--card-background);
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn:not(.secondary):hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+    }
+
+    /* Secondary Button */
+    .btn.secondary {
+      background-color: transparent;
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+
+    .btn.secondary:hover {
+      background-color: var(--secondary-color);
+      color: var(--card-background);
+    }
+
+    /* Video Embed Container */
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        box-shadow: var(--shadow-light);
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* Activity Styles */
+    .activity {
+      background: var(--background-color);
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .drag-container, .drop-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .drag-item {
+      background-color: var(--primary-color);
+      color: var(--card-background);
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: grab;
+      font-weight: 700;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+    
+    .drag-item:active {
+        cursor: grabbing;
+    }
+
+    .drop-zone {
+      flex: 1;
+      min-width: 250px;
+      background-color: #e9ecef;
+      border: 2px dashed var(--secondary-color);
+      border-radius: 5px;
+      padding: 15px;
+      text-align: center;
+      color: var(--secondary-color);
+      font-weight: 400;
+      transition: background-color 0.3s;
+    }
+
+    .drop-zone.drag-over {
+      background-color: #ffeeba;
+      border-color: #ffc107;
+    }
+
+    .drop-zone.correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+      font-weight: 700;
+    }
+
+    .sortable-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sortable-list li {
+      background: var(--card-background);
+      border: 1px solid var(--border-color);
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      cursor: grab;
+      font-size: 1.1rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .sortable-list li:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sortable-ghost {
+        opacity: 0.4;
+        background-color: #ced4da;
+    }
+    
+    #matchResult, #orderResult {
+        margin-top: 15px;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      border-top: 1px solid var(--border-color);
+      color: var(--secondary-color);
+      background-color: var(--card-background);
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .navbar ul {
+            flex-wrap: wrap;
+        }
+        .navbar li a {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.7rem;
+        }
+        .drop-zone {
+            min-width: 100%;
+        }
+        .drag-container {
+            justify-content: center;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>الذكاء الاصطناعي في تعزيز التعليم الإلكتروني</h1>
+      <p class="subtitle">للمهارات العملية في قطاع غزة</p>
+      <p class="author">وحدة تعليمية رقمية مفتوحة – مبنية بنموذج ADDIE<br/>
+      تم التطوير بواسطة: محمد نايف القريناوي | اسراء حسني زيدات</p>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <div class="container">
+      <ul>
+        <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+        <li><a href="#analysis" class="nav-link">التحليل</a></li>
+        <li><a href="#design" class="nav-link">التصميم</a></li>
+        <li><a href="#development" class="nav-link">التطوير</a></li>
+        <li><a href="#implementation" class="nav-link">التنفيذ</a></li>
+        <li><a href="#evaluation" class="nav-link">التقويم</a></li>
+        <li><a href="#activities" class="nav-link">أنشطة</a></li>
+        <li><a href="#quiz" class="nav-link">اختبار</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="home" class="section active">
+    <div class="container">
+      <h2>المهام المطلوبة في مساق الموارد التعليمية المفتوحة</h2>
+      <p><strong>الدكتور محمود حوامدة</strong></p>
+
+      <h3>ورقة بحثية – مراجعة منهجية Systematic review</h3>
+      <ol>
+        <li>البحث عن دراسات خلال الفترة المحددة في قواعد البيانات العلمية (مثلاً في الجامعات، والمدارس، أو التعليم المهني و... الخ) خلال الفترة ما بين 20 و؟؟</li>
+        <li>واستخراج أي قواعد بيانات سكوبس، جوجل... الخ</li>
+        <li>أحادي عند الانتهاء لكل سنة؟</li>
+        <li>ما هي الأساليب البحثية التي تم استخدامها؟</li>
+        <li>ما أدوات جمع البيانات التي تم استخدامها؟</li>
+        <li>ما هي العينة التي تم استخدامها؟</li>
+      </ol>
+
+      <h3>Systematic review – ورقة منهجية</h3>
+      <ol>
+        <li>البحث عن دراسات خلال الـ 5 سنوات الماضية في قواعد بيانات علمية بحيث لا يقل عدد الأوراق البحثية عن 30 بحثًا.</li>
+        <li>وضع معايير وجدول لتحليل الدراسات (أهداف الدراسة، منهجية البحث، أدوات البحث، العينة المبحوثة... الخ)</li>
+        <li>كتابة الورقة البحثية بحيث تتضمن (ملخص، المقدمة، المنهجية، النتائج، المناقشة، التوصيات)</li>
+        <li>التوثيق والاقتباس حسب APA</li>
+      </ol>
+      
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube.com/embed/0GHfIO6IgAg" 
+          title="فيديو تعريفي للوحدة" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      
+      <button onclick="showSection('analysis')" class="btn">ابدأ الوحدة</button>
+    </div>
+  </section>
+
+  <section id="analysis" class="section">
+    <div class="container">
+      <h2>1. المرحلة الأولى: التحليل (Analysis)</h2>
+
+      <h3>موضوع الوحدة الدراسية</h3>
+      <p><strong>الذكاء الاصطناعي في التعليم الإلكتروني: من المفهوم إلى التطبيق العملي.</strong></p>
+
+      <h3>الفئة المستهدفة وخصائص المتعلم</h3>
+      <ul>
+        <li><strong>الفئة المستهدفة:</strong> طلاب الماجستير في تكنولوجيا التعليم، المعلمون، ومصممو المحتوى الرقمي.</li>
+        <li><strong>خصائص المتعلم:</strong>
+          <ul>
+            <li>مستوى متقدم في التعليم الإلكتروني.</li>
+            <li>يمتلكون مهارات رقمية أساسية.</li>
+            <li>يحتاجون أمثلة عملية وأدوات ذكاء اصطناعي مجانية.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>الأهداف التعليمية العامة</h3>
+      <ol>
+        <li>فهم مفهوم الذكاء الاصطناعي ومكوناته.</li>
+        <li>تحديد تطبيقات الذكاء الاصطناعي في التعليم الإلكتروني.</li>
+        <li>تصميم درس باستخدام أدوات الذكاء الاصطناعي.</li>
+        <li>مناقشة التحديات والحلول.</li>
+        <li>اقتراح أفكار إبداعية للمستقبل.</li>
+      </ol>
+
+      <h3>البيئة التعليمية والموارد المفتوحة</h3>
+      <ul>
+        <li><strong>البيئة التعليمية:</strong> رقمية 100%، وتتطلب أجهزة حاسوب وإنترنت.</li>
+        <li><strong>الموارد المفتوحة:</strong> عرض بوربوينت، فيديو مصمم على invidio، أدوات تقييم تم استخدام Google Form، منصة نشر.</li>
+      </ul>
+
+      <h3>النتيجة</h3>
+      <p>تم تحديد أهداف واضحة والوحدة كاملة والموارد المتاحة ومنصة النشر.</p>
+
+      <button onclick="showSection('home')" class="btn secondary">السابق</button>
+      <button onclick="showSection('design')" class="btn">التالي</button>
+    </div>
+  </section>
+
+  <section id="design" class="section">
+    <div class="container">
+      <h2>2. المرحلة الثانية: التصميم (Design)</h2>
+
+      <h3>الأهداف التفصيلية</h3>
+      <ul>
+        <li>يصف المتعلم مكونات الذكاء الاصطناعي بأمثلة واقعية.</li>
+        <li>يحدد 3 تطبيقات للذكاء الاصطناعي في التعليم الإلكتروني.</li>
+        <li>يصمم درسًا إلكترونيًا باستخدام أداة ذكاء اصطناعي.</li>
+        <li>يناقش تحديين لدمج AI ويقترح حلًا لكل منهما.</li>
+        <li>يقترح فكرة إبداعية لاستخدام AI في التعليم.</li>
+      </ul>
+
+      <h3>الاستراتيجية ونوع الوسائط</h3>
+      <ul>
+        <li><strong>الاستراتيجية المستخدمة:</strong> التعلم القائم على النشاط التفاعلي.</li>
+        <li><strong>نوع الوسائط المستخدمة:</strong> صور، عرض، فيديو، لعبة تفاعلية، واختبار تفاعلي.</li>
+      </ul>
+      
+      <button onclick="showSection('analysis')" class="btn secondary">السابق</button>
+      <button onclick="showSection('development')" class="btn">التالي</button>
+    </div>
+  </section>
+
+  <section id="development" class="section">
+    <div class="container">
+      <h2>3. المرحلة الثالثة: التطوير (Development)</h2>
+      <p>تم إنتاج المواد التعليمية باستخدام أدوات مجانية:</p>
+      <ul>
+        <li>فيديوهات تعليمية قصيرة (5-7 دقائق)</li>
+        <li>عروض تقديمية تفاعلية</li>
+        <li>أنشطة سحب وإفلات، ترتيب</li>
+      </ul>
+      <button onclick="showSection('design')" class="btn secondary">السابق</button>
+      <button onclick="showSection('implementation')" class="btn">التالي</button>
+    </div>
+  </section>
+
+  <section id="implementation" class="section">
+    <div class="container">
+      <h2>4. المرحلة الرابعة: التنفيذ (Implementation)</h2>
+      <p>تم رفع المحتوى ومشاركته:</p>
+      <ul>
+        <li>رفع على GitHub Pages</li>
+        <li>مشاركة الرابط مع الزملاء</li>
+        <li>تنفيذ نشاط تعليمي عملي</li>
+      </ul>
+      <button onclick="showSection('development')" class="btn secondary">السابق</button>
+      <button onclick="showSection('evaluation')" class="btn">التالي</button>
+    </div>
+  </section>
+
+  <section id="evaluation" class="section">
+    <div class="container">
+      <h2>5. المرحلة الخامسة: التقويم (Evaluation)</h2>
+      <p>تم جمع الملاحظات وتحليل النتائج:</p>
+      <ul>
+        <li>استبانة رضا الطلاب</li>
+        <li>تحليل أداء الاختبار</li>
+        <li>تحسين المحتوى بناءً على الملاحظات</li>
+      </ul>
+      <button onclick="showSection('implementation')" class="btn secondary">السابق</button>
+      <button onclick="showSection('activities')" class="btn">التالي</button>
+    </div>
+  </section>
+
+  <section id="activities" class="section">
+    <div class="container">
+      <h2>أنشطة تفاعلية</h2>
+
+      <div class="activity">
+        <h3>نشاط 1: مطابقة أدوات AI</h3>
+        <div class="drag-container">
+          <div class="drag-item" draggable="true" data-value="canva">Canva AI</div>
+          <div class="drag-item" draggable="true" data-value="teachable">Teachable Machine</div>
+          <div class="drag-item" draggable="true" data-value="colab">Google Colab</div>
+        </div>
+        <div class="drop-container">
+          <div class="drop-zone" data-match="canva">تصميم بوسترات</div>
+          <div class="drop-zone" data-match="teachable">تدريب نماذج AI</div>
+          <div class="drop-zone" data-match="colab">محاكاة البرمجة</div>
+        </div>
+        <button onclick="checkMatching()" class="btn">تحقق</button>
+        <p id="matchResult"></p>
+      </div>
+
+      <div class="activity">
+        <h3>نشاط 2: رتب خطوات Google Colab</h3>
+        <ol id="sortable" class="sortable-list">
+          <li draggable="true">افتح colab.research.google.com</li>
+          <li draggable="true">أنشئ دفتر جديد</li>
+          <li draggable="true">اكتب الكود</li>
+          <li draggable="true">اضغط Run</li>
+        </ol>
+        <button onclick="checkOrder()" class="btn">تحقق</button>
+        <p id="orderResult"></p>
+      </div>
+
+      <a href="https://ai.invideo.io/watch/ghj9L6dsRTd" target="_blank" class="btn" style="margin-top:30px; background:#4CAF50;">
+        انتقل إلى اللعبة التعليمية
+      </a>
+
+      <a href="https://forms.gle/9mjZQ3oZmCax8rPU8" target="_blank" class="btn" style="margin-top:30px; background:#1a73e8;">
+        انتقل إلى الاختبار (Google Form)
+      </a>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="container">
+      <h2>الاختبار الشامل</h2>
+      <p>تم نقل الاختبار إلى <strong>Google Forms</strong> للتقويم الآلي.</p>
+      <a href="https://forms.gle/9mjZQ3oZmCax8rPU8" target="_blank" class="btn" style="background:#1a73e8;">
+        افتح الاختبار
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>مرخص بـ <a href="https://forms.gle/9mjZQ3oZmCax8rPU8" target="_blank">CC BY 4.0</a></p>
+      <p><strong>كود المشروع:</strong> <a href="https://github.com/MQrinawi1990/ai-gaza-oer" target="_blank">GitHub Repository</a></p>
+      <p>محمد نايف القريناوي | اسراء حسني زيدات</p>
+    </div>
+  </footer>
+
+  <script>
+    // Function to handle section navigation
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+
+        document.querySelectorAll('.navbar li a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize the view on load
+        showSection('home'); 
+
+        // Activity 1: Drag & Drop Logic Setup
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropZones = document.querySelectorAll('.drop-zone');
+
+        // Drag Start
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', e.target.dataset.value);
+                e.target.classList.add('dragging');
+            });
+            item.addEventListener('dragend', (e) => {
+                e.target.classList.remove('dragging');
+            });
+        });
+
+        // Drop Zone Handlers
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                const data = e.dataTransfer.getData('text/plain');
+                const draggedItem = document.querySelector(`.drag-item[data-value="${data}"]`);
+
+                // Simple match check during drop
+                if (zone.dataset.match === data) {
+                    // Update visual for correct match
+                    zone.textContent = draggedItem.textContent;
+                    zone.classList.add('correct');
+                    zone.classList.remove('incorrect');
+                    draggedItem.style.display = 'none'; // Hide the dragged item
+                } else {
+                    // Visual feedback for incorrect drop
+                    zone.classList.add('incorrect');
+                    setTimeout(() => zone.classList.remove('incorrect'), 500);
+                }
+            });
+        });
+
+        // Activity 1: Check Matching Function
+        function checkMatching() {
+            const result = document.getElementById('matchResult');
+            const droppedCount = document.querySelectorAll('.drop-zone.correct').length;
+            
+            if (droppedCount === 3) {
+                result.textContent = 'أحسنت! جميع الإجابات صحيحة.';
+                result.style.color = 'green';
+            } else {
+                result.textContent = `لم تكتمل المطابقة بعد. تم مطابقة ${droppedCount} من 3.`;
+                result.style.color = 'red';
+            }
+        }
+        
+        // Activity 2: Sortable Logic (Using SortableJS)
+        const sortableList = document.getElementById('sortable');
+        if (sortableList) {
+            new Sortable(sortableList, {
+                animation: 150,
+                ghostClass: 'sortable-ghost'
+            });
+        }
+        
+        // Activity 2: Check Order Logic
+        function checkOrder() {
+            const listItems = Array.from(document.getElementById('sortable').children);
+            // The correct order of steps for Google Colab
+            const correctOrder = [
+                "افتح colab.research.google.com", 
+                "أنشئ دفتر جديد", 
+                "اكتب الكود", 
+                "اضغط Run"
+            ];
+            
+            const currentOrder = listItems.map(item => item.textContent.trim());
+            const isCorrect = currentOrder.every((item, index) => item === correctOrder[index]);
+            const result = document.getElementById('orderResult');
+
+            if (isCorrect) {
+                result.textContent = 'رائع! الترتيب صحيح.';
+                result.style.color = 'green';
+            } else {
+                result.textContent = 'الترتيب غير صحيح. حاول مرة أخرى.';
+                result.style.color = 'red';
+            }
+        }
+        
+        // Expose functions to the global scope for onclick attributes in HTML
+        window.checkMatching = checkMatching;
+        window.checkOrder = checkOrder;
+        window.showSection = showSection;
+    });
+
+  </script>
+</body>
+</html>
